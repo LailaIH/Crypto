@@ -19618,3 +19618,19 @@ pre[class*=language-] {
 .token.variable {
   color: #ff6666;
 }
+
+.badge-green {
+  background-color: green;
+  color: white;
+  padding: 4px 8px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.badge-red {
+  background-color: red;
+  color: white;
+  padding: 4px 8px;
+  text-align: center;
+  border-radius: 5px;
+}

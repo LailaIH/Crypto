@@ -2,6 +2,10 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\APINews;
+use App\Http\Controllers\API\APIRecommendations;
+use App\Http\Controllers\API\APISubscribe;
+use App\Http\Controllers\API\Authentication;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +18,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::post('/register' , [Authentication::class,'register']);
+Route::post('/login' , [Authentication::class,'login']);
+
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+// public route
+Route::get('/news', [APINews::class, 'news'])->name('news.api.index');
+
+// private routes
+Route::group(['middleware'=>['auth:sanctum']] , function() {
+Route::get('/recommendations/{uuid}', [APIRecommendations::class, 'recommendations'])->name('recommendations.api.index');
+Route::post('/subscribe-user', [APISubscribe::class, 'subscribe'])->name('subscribe.api');
+
+});
+
+Route::get('/me', [APIRecommendations::class, 'me'])->name('api.me');
+
