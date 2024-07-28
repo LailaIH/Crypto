@@ -24,12 +24,29 @@ class Authentication extends Controller
             
         ]);
 
-      
         $user = new User();
         $user->name = $request->input('name');
         $user->email = $request->input('email');
        
+       
         $user->password = bcrypt($request->input('password'));
+
+        if ($request->hasFile('img')) {
+            $image = $request->file('img');
+            $imageName = $image->getClientOriginalName();
+
+            $destinationPath = public_path('userImages'); 
+            if (!file_exists($destinationPath . '/' . $imageName)) {
+
+            $image->move(public_path('userImages'), $imageName);
+            }
+
+            $user->img = $imageName;
+           
+           }
+
+      
+
         
         $user->save();
 
@@ -75,6 +92,32 @@ class Authentication extends Controller
         return [
             'message' => 'Logged out'
         ];
+    }
+
+    // change password
+
+    public function changePassword(Request $request){
+        $data = $request->validate( [
+            'old_password'=>'required',
+            'password'=>'required|string|confirmed'
+            
+        ]);
+
+
+        $user=$request->user();
+        if(Hash::check($request->old_password,$user->password)){
+            $user->update([
+                'password'=>Hash::make($request->password)
+            ]);
+            return response()->json([
+                'message'=>'Password successfully updated',
+            ],200);
+        }else{
+            return response()->json([
+                'message'=>'Old password does not matched',
+            ],400);
+        }
+
     }
 
 

@@ -53,6 +53,8 @@ class HomeController extends Controller
 
         ]);
 
+
+
         $user = new User();
         $user->name = $data['name'];
         $user->email = $data['email'];

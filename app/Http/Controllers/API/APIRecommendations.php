@@ -18,7 +18,15 @@ class APIRecommendations extends Controller
     // check token's validation 
 
     public function me(Request $request){
-        return response(['is expired'=>PersonalAccessToken::findToken($request->bearerToken())->isExpired()]);
+        return response([
+            
+        'is expired'=>PersonalAccessToken::findToken($request->bearerToken())->isExpired(),
+        'user'=>$request->user(),
+        
+        ]
+    
+    
+    );
 
     }
 

@@ -36,7 +36,9 @@
                                                 <label for="value" class="form-label"> Value </label>
 
                                                    
-                                                   <input class="form-control" name="value"  type="text" value="{{$option->value}}" required/>
+                                                   <textarea class="form-control" name="value"  type="text"  required>
+                                                   {{$option->value}}
+                                                   </textarea>
                                                  
                                                </div>
                                                 
