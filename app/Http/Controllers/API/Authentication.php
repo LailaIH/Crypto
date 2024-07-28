@@ -66,15 +66,17 @@ class Authentication extends Controller
         return response($response, 201);
     }
 
-    // public function logout(Request $request){
-    //     //$user = Auth::user();
-    //     auth()->user()->tokens()->delete();
-    //    // $request->user()->currentAccessToken()->delete();
+    public function logout(Request $request){
+        //$user = Auth::user();
+       $request->user()->tokens()->delete();
+       // $request->user()->currentAccessToken()->delete();
 
 
-    //     return [
-    //         'message' => 'Logged out'
-    //     ];
-    // }
+        return [
+            'message' => 'Logged out'
+        ];
+    }
+
+
     
 }

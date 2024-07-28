@@ -15,10 +15,20 @@ class APISubscribe extends Controller
    
 
   // when user wants to subscribe 
+ 
 
   public function subscribe(Request $request){
 
     $request->validate(['uuid'=>'required']);
+
+
+    // get the user that has logged in and get their token , pass it with the request , if the logged user is the same as the uuid user then continue
+    $userUUID = $request->input('uuid');
+    $authUser = $request->user(); // Get the authenticated user (this ispossible with sanctum or other middleware like auth , we can get the auth user)
+
+    if ($authUser->uuid !== $userUUID) {
+        return response()->json(['error' => 'Unauthorized action'], 403);
+    }
 
     $user = User::where('uuid',$request->uuid)->first();
     if($user){

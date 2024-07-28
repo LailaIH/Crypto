@@ -237,11 +237,20 @@
                     </a>
                     <div class="collapse" id="collapseDashboards1" data-bs-parent="#accordionSidenav">
                         <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
-                            <a class="nav-link" href="{{route('users.registeredUsers')}}">
+                           
+                        <a class="nav-link" href="{{route('users.index')}}">
+                              Non Subscribed Users 
+                            </a>
+                        <a class="nav-link" href="{{route('users.registeredUsers')}}">
                                Users That Want To Subscribe
                             </a>
                             <a class="nav-link" href="{{route('users.freeDaysUsers')}}">Free Days Subscribed Users</a>
                             <a class="nav-link" href="{{route('users.nonFreeDaysUsers')}}">Subscribed Users (no free days)</a>
+                            <a class="nav-link" href="{{route('users.create')}}">
+                                New User
+                                <span class="badge bg-primary-soft text-primary ms-auto"><i class="fa-solid fa-plus"></i></span>
+
+                            </a>
 
 
 
@@ -327,7 +336,7 @@
 
                     </div>
             <!-- Sidenav Footer-->
-            <div class="sidenav-footer " style="margin-top: 27.3rem;">
+            <div class="sidenav-footer " style="margin-top: 22.6rem;">
                 <div class="sidenav-footer-content">
                     <div class="sidenav-footer-subtitle">Logged in as:</div>
                     <div class="sidenav-footer-title">Valerie Luna</div>

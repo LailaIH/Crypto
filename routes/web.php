@@ -32,7 +32,21 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
+Route::get('/users', [HomeController::class, 'users'])->name('users.index');
+Route::get('/users/create', [HomeController::class, 'create'])->name('users.create');
+Route::post('/users/store', [HomeController::class, 'store'])->name('users.store');
+Route::get('/users/edit/{uuid}', [HomeController::class, 'edit'])->name('users.edit');
+Route::put('/users/update/{uuid}', [HomeController::class, 'update'])->name('users.update');
+
+
+
+
+
+
 Route::get('/subscribe/{uuid}', [HomeController::class, 'subscribe'])->name('subscribe');
+Route::put('/unsubscribe/{uuid}', [HomeController::class, 'unsubscribe'])->name('unsubscribe');
+
 Route::get('/users/registered-users', [HomeController::class, 'registeredUsers'])->name('users.registeredUsers');
 Route::get('/users/free/registered-users', [HomeController::class, 'freeDaysUsers'])->name('users.freeDaysUsers');
 Route::get('/users/non-free/registered-users', [HomeController::class, 'nonFreeDaysUsers'])->name('users.nonFreeDaysUsers');

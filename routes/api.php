@@ -35,6 +35,7 @@ Route::get('/news', [APINews::class, 'news'])->name('news.api.index');
 Route::group(['middleware'=>['auth:sanctum']] , function() {
 Route::get('/recommendations/{uuid}', [APIRecommendations::class, 'recommendations'])->name('recommendations.api.index');
 Route::post('/subscribe-user', [APISubscribe::class, 'subscribe'])->name('subscribe.api');
+Route::post('/logout' , [Authentication::class,'logout']);
 
 });
 

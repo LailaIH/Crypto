@@ -27,6 +27,7 @@
                                     <tr style="white-space: nowrap; font-size: 14px;">
                                         <th>User</th>
                                         <th>Email</th>
+                                        <th></th>
                              
                                        
                                        
@@ -44,7 +45,13 @@
                                             <td>{{$user->email}}</td>
 
                                            
-
+                                            <td>
+                                            <form method="post" action="{{route('unsubscribe',$user->uuid)}}">
+                                                    @csrf 
+                                                    @method('put')
+                                                <button type="submit" class="btn btn-danger btn-xs">Unsubscribe</button>
+                                                </form>
+                                           </td>
 
                          
 
